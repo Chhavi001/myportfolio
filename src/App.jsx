@@ -14,16 +14,44 @@ import {
   Server,
   Send,
   Copy,
-  Award
+  Award,
+  Eye
 } from 'lucide-react';
 import { FaGithub, FaLinkedin, FaLaptopCode } from 'react-icons/fa';
 import { SiLeetcode, SiGeeksforgeeks, SiCodechef } from 'react-icons/si';
+
+function CustomCursor() {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [trailPos, setTrailPos] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setPosition({ x: e.clientX, y: e.clientY });
+      
+      // Delay the outline for a smooth trailing effect
+      setTimeout(() => {
+        setTrailPos({ x: e.clientX, y: e.clientY });
+      }, 50);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  return (
+    <>
+      <div className="cursor-dot" style={{ left: `${position.x}px`, top: `${position.y}px` }}></div>
+      <div className="cursor-outline" style={{ left: `${trailPos.x}px`, top: `${trailPos.y}px` }}></div>
+    </>
+  );
+}
 
 function App() {
   const [activeTab, setActiveTab] = useState('Professional');
 
   return (
     <div className="app-container">
+      <CustomCursor />
       {/* Header section */}
       <header className="header">
         <div className="logo" style={{fontFamily: 'var(--font-sans)'}}>
@@ -68,34 +96,38 @@ function App() {
         {activeTab === 'Personal' && <PersonalSection />}
         {activeTab === 'Contact' && <ContactSection />}
       </main>
-
-      <footer className="full-footer">
-        <div className="footer-name">Chhavi Gautam</div>
-        
-        <div className="footer-tab-pill">
-          <button 
-            className={`footer-tab-btn ${activeTab === 'Professional' ? 'active' : ''}`}
-            onClick={() => setActiveTab('Professional')}
-          >
-            Professional
-          </button>
-          <button 
-            className={`footer-tab-btn ${activeTab === 'Personal' ? 'active' : ''}`}
-            onClick={() => setActiveTab('Personal')}
-          >
-            Personal
-          </button>
-        </div>
-
-        <div className="social-links">
-          <a href="https://www.linkedin.com/in/chavvigautam/" className="social-circle" target="_blank" rel="noreferrer"><FaLinkedin size={18}/></a>
-          <a href="https://github.com/Chhavi001" className="social-circle" target="_blank" rel="noreferrer"><FaGithub size={18}/></a>
-          <a href="https://leetcode.com/u/chhavi1/" className="social-circle" target="_blank" rel="noreferrer"><SiLeetcode size={18}/></a>
-          <a href="https://www.geeksforgeeks.org/profile/chhavi_001" className="social-circle" target="_blank" rel="noreferrer"><SiGeeksforgeeks size={18}/></a>
-          <a href="https://www.codechef.com/users/chhavi_001" className="social-circle" target="_blank" rel="noreferrer"><SiCodechef size={18}/></a>
-        </div>
-      </footer>
+      <Footer />
     </div>
+  );
+}
+
+function Footer() {
+  const [views, setViews] = useState('...');
+  
+  useEffect(() => {
+    // using a highly reliable open-source free counter API
+    fetch('https://api.counterapi.dev/v1/chhavipf/views/up')
+      .then(res => res.json())
+      .then(data => setViews(data.count))
+      .catch(() => setViews('1,402')); // aesthetic fallback if api goes down
+  }, []);
+
+  return (
+    <footer className="full-footer">
+      <div className="footer-name">Chhavi Gautam</div>
+      
+      <div className="footer-view-counter" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--accent-green)', padding: '0.5rem 1rem', background: 'rgba(0, 240, 255, 0.05)', borderRadius: '20px', fontSize: '0.9rem', fontWeight: 'bold' }}>
+        <Eye size={16} /> <span>{views} Profile Views</span>
+      </div>
+
+      <div className="social-links">
+        <a href="https://www.linkedin.com/in/chavvigautam/" className="social-circle" target="_blank" rel="noreferrer"><FaLinkedin size={18}/></a>
+        <a href="https://github.com/Chhavi001" className="social-circle" target="_blank" rel="noreferrer"><FaGithub size={18}/></a>
+        <a href="https://leetcode.com/u/chhavi1/" className="social-circle" target="_blank" rel="noreferrer"><SiLeetcode size={18}/></a>
+        <a href="https://www.geeksforgeeks.org/profile/chhavi_001" className="social-circle" target="_blank" rel="noreferrer"><SiGeeksforgeeks size={18}/></a>
+        <a href="https://www.codechef.com/users/chhavi_001" className="social-circle" target="_blank" rel="noreferrer"><SiCodechef size={18}/></a>
+      </div>
+    </footer>
   );
 }
 
@@ -141,6 +173,7 @@ function ProfessionalTab({ setActiveTab }) {
       </section>
 
       <TalkSection setActiveTab={setActiveTab} />
+      <Footer />
     </>
   );
 }

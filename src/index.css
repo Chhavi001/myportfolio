@@ -37,7 +37,9 @@ body {
   color: var(--text-main);
   line-height: 1.6;
   min-height: 100vh;
+  position: relative;
   overflow-x: hidden;
+  cursor: none; /* Hide default cursor to use custom */
 
   /* Subtle background grid */
   background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
