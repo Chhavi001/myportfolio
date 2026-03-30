@@ -173,7 +173,6 @@ function ProfessionalTab({ setActiveTab }) {
       </section>
 
       <TalkSection setActiveTab={setActiveTab} />
-      <Footer />
     </>
   );
 }

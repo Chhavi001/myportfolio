@@ -905,3 +905,33 @@ section {
   border-color: rgba(0, 240, 255, 0.5);
   box-shadow: var(--accent-glow);
 }
+
+/* --- CUSTOM CURSOR --- */
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent-green);
+  border-radius: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.cursor-outline {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--accent-secondary);
+  border-radius: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9998;
+  transition: width 0.2s, height 0.2s;
+}
+
+/* Fallback for touch devices where we should display the normal cursor */
+@media (pointer: coarse) {
+  body { cursor: auto; }
+  .cursor-dot, .cursor-outline { display: none; }
+}
