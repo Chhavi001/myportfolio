@@ -54,7 +54,7 @@ function App() {
         </div>
 
         <a 
-          href="https://drive.google.com/file/d/1GlMRa4OV8_Ad-Nb1YJ-VPhC1rW31IAq6/view?usp=sharing"
+          href="https://drive.google.com/file/d/1bU0tnqkOx7_xSo5I2429Hp-zLb_GnAu_/view?usp=sharing"
           target="_blank" rel="noreferrer"
           className="nav-button"
         >
@@ -162,7 +162,7 @@ function HeroSection() {
         </p>
         
         <div className="hero-actions">
-          <a href="https://drive.google.com/file/d/1GlMRa4OV8_Ad-Nb1YJ-VPhC1rW31IAq6/view?usp=sharing" target="_blank" rel="noreferrer" className="nav-button" style={{ borderRadius: '40px', padding: '0.75rem 1.5rem', fontWeight: 'bold' }}>
+          <a href="https://drive.google.com/file/d/1bU0tnqkOx7_xSo5I2429Hp-zLb_GnAu_/view?usp=sharing" target="_blank" rel="noreferrer" className="nav-button" style={{ borderRadius: '40px', padding: '0.75rem 1.5rem', fontWeight: 'bold' }}>
             MY RESUME <ChevronRight size={16} />
           </a>
           
