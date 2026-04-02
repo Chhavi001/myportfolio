@@ -264,10 +264,18 @@ function EducationSection() {
 
       <div className="outline-card" style={{borderTop: '3px solid var(--accent-green)'}}>
         <div className="card-glow"></div>
+        <h3 className="edu-title">Senior Secondary (Intermediate)</h3>
+        <span className="edu-date">2020 - 2022</span>
+        <div className="edu-meta"><GraduationCap size={18} /> First Division</div>
+        <p className="edu-school">GGIC Ghaziabad</p>
+      </div>
+
+      <div className="outline-card" style={{borderTop: '3px solid var(--accent-green)'}}>
+        <div className="card-glow"></div>
         <h3 className="edu-title">High School Certificate</h3>
-        <span className="edu-date">2018 - 2022</span>
-        <div className="edu-meta"><GraduationCap size={18} /> 84%</div>
-        <p className="edu-school">GGIC Ghaziabad - Senior Secondary (79.2%)</p>
+        <span className="edu-date">2018 - 2020</span>
+        <div className="edu-meta"><GraduationCap size={18} /> First Division</div>
+        <p className="edu-school">GGIC Ghaziabad</p>
       </div>
     </div>
   );
