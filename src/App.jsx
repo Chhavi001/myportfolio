@@ -256,7 +256,7 @@ function EducationSection() {
     <div className="education-grid">
       <div className="outline-card" style={{borderTop: '3px solid var(--accent-secondary)'}}>
         <div className="card-glow purple"></div>
-        <h3 className="edu-title">Bachelor in Computer Science (Hons)</h3>
+        <h3 className="edu-title">B-Tech in CSE (Hons)</h3>
         <span className="edu-date">Aug 1, 2022 - Jun 15, 2026</span>
         <div className="edu-meta" style={{color: 'var(--accent-secondary)'}}><GraduationCap size={18} /> 7.95</div>
         <p className="edu-school">Ajay Kumar Garg Engineering College, Ghaziabad</p>
