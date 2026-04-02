@@ -221,7 +221,7 @@ function HeroSection() {
         </svg>
         <div className="hero-image-inner">
           {/* USER CUSTOM UPLOADED IMAGE */}
-          <img src="/images/chhavi_real.jpg" alt="Chhavi's Portrait" />
+          <img src="/images/chhavi_new.jpg" alt="Chhavi's Portrait" />
         </div>
       </div>
     </div>
